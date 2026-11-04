@@ -1,0 +1,306 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    color-scheme: dark;
+    --bg-page: #000000;
+    --text-primary: #ffffff;
+    --text-secondary: #c8c8c8;
+    --text-muted: #808080;
+    --border-color: rgba(255, 255, 255, 0.1);
+    --glow-color: rgba(167, 139, 250, 0.13);
+    --glow-subtle: rgba(139, 92, 246, 0.04);
+  }
+
+  html.light,
+  :root.light,
+  [data-theme="light"] {
+    color-scheme: light;
+    --bg-page: #fbfbfd;
+    --text-primary: #09090b;
+    --text-secondary: #3f3f46;
+    --text-muted: #71717a;
+    --border-color: rgba(0, 0, 0, 0.08);
+    --glow-color: rgba(124, 58, 237, 0.07);
+    --glow-subtle: rgba(139, 92, 246, 0.02);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-snap-type: y proximity;
+    background-color: var(--bg-page);
+    color: var(--text-secondary);
+    font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--bg-page);
+    color: var(--text-secondary);
+    min-height: 100vh;
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  /* Refined Luxury Display Headings */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Outfit", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    letter-spacing: -0.025em;
+    color: var(--text-primary);
+    font-weight: 700;
+  }
+
+  /* Smooth theme change transition only when actively toggling */
+  html.theme-transitioning,
+  html.theme-transitioning *,
+  html.theme-transitioning *::before,
+  html.theme-transitioning *::after {
+    transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease !important;
+    transition-delay: 0s !important;
+  }
+
+  code,
+  kbd,
+  samp,
+  pre,
+  .font-mono {
+    font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  }
+
+  /* Accessible high-contrast monochrome selection */
+  ::selection {
+    background-color: #7c3aed;
+    color: #ffffff;
+  }
+
+  /* Minimalist scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--bg-page);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #2a2a2a;
+    border-radius: 3px;
+  }
+
+  html.light ::-webkit-scrollbar-thumb {
+    background: #d4d4d8;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #3a3a3a;
+  }
+
+  html.light ::-webkit-scrollbar-thumb:hover {
+    background: #a1a1aa;
+  }
+}
+
+/* Phase 1 Animations: Transform-only Drift Glow and Single Sweep Gradient */
+@keyframes driftGlow {
+  0% {
+    transform: translate(-50%, -50%) translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(-50%, -50%) translate3d(24px, -18px, 0) scale(1.08);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) translate3d(-18px, 14px, 0) scale(0.96);
+  }
+}
+
+@keyframes sweepOnce {
+  0% {
+    background-position: 140% 0;
+  }
+
+  100% {
+    background-position: -140% 0;
+  }
+}
+
+.hero-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 560px;
+  height: 360px;
+  max-width: 90vw;
+  border-radius: 9999px;
+  background: radial-gradient(ellipse at center, var(--glow-color) 0%, var(--glow-subtle) 45%, transparent 70%);
+  filter: blur(54px);
+  pointer-events: none;
+  z-index: 0;
+  will-change: transform;
+  animation: driftGlow 20s ease-in-out infinite alternate;
+}
+
+.accent-sweep-1 {
+  background: linear-gradient(110deg, #a78bfa 0%, #a78bfa 25%, #ffffff 50%, #c084fc 75%, #a78bfa 100%);
+  background-size: 260% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: sweepOnce 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.35s 1 forwards;
+}
+
+html.light .accent-sweep-1 {
+  background: linear-gradient(110deg, #7c3aed 0%, #7c3aed 25%, #4f46e5 50%, #9333ea 75%, #7c3aed 100%);
+  background-size: 260% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.accent-sweep-2 {
+  background: linear-gradient(110deg, #a78bfa 0%, #a78bfa 25%, #ffffff 50%, #c084fc 75%, #a78bfa 100%);
+  background-size: 260% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: sweepOnce 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.45s 1 forwards;
+}
+
+html.light .accent-sweep-2 {
+  background: linear-gradient(110deg, #7c3aed 0%, #7c3aed 25%, #4f46e5 50%, #9333ea 75%, #7c3aed 100%);
+  background-size: 260% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.accent-sweep-3 {
+  background: linear-gradient(110deg, #a78bfa 0%, #a78bfa 25%, #ffffff 50%, #c084fc 75%, #a78bfa 100%);
+  background-size: 260% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: sweepOnce 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.55s 1 forwards;
+}
+
+html.light .accent-sweep-3 {
+  background: linear-gradient(110deg, #7c3aed 0%, #7c3aed 25%, #4f46e5 50%, #9333ea 75%, #7c3aed 100%);
+  background-size: 260% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-glow {
+    animation: none;
+  }
+
+  .accent-sweep-1,
+  .accent-sweep-2,
+  .accent-sweep-3 {
+    animation: none;
+    background: none;
+    -webkit-text-fill-color: #a78bfa;
+    color: #a78bfa;
+  }
+
+  .heading-sweep-active {
+    animation: none;
+    background: none;
+    -webkit-text-fill-color: #ffffff;
+    color: #ffffff;
+  }
+
+  .typewriter-caret {
+    display: none;
+  }
+}
+
+/* Phase 2: Typewriter Caret & Section Heading Light Sweep */
+@keyframes blinkCaret {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+.typewriter-caret {
+  display: inline-block;
+  width: 2px;
+  height: 0.85em;
+  margin-left: 3px;
+  background-color: #a78bfa;
+  vertical-align: -0.05em;
+  animation: blinkCaret 0.8s ease-in-out infinite;
+  transition: opacity 0.3s ease;
+}
+
+html.light .typewriter-caret {
+  background-color: #7c3aed;
+}
+
+@keyframes sweepHeadingText {
+  0% {
+    background-position: 140% 0;
+  }
+
+  100% {
+    background-position: -140% 0;
+  }
+}
+
+.heading-sweep-active {
+  background: linear-gradient(110deg,
+      #ffffff 0%,
+      #ffffff 25%,
+      #c084fc 48%,
+      #a78bfa 56%,
+      #ffffff 75%,
+      #ffffff 100%);
+  background-size: 260% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: sweepHeadingText 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+html.light .heading-sweep-active {
+  background: linear-gradient(110deg,
+      #09090b 0%,
+      #09090b 25%,
+      #7c3aed 48%,
+      #9333ea 56%,
+      #09090b 75%,
+      #09090b 100%);
+  background-size: 260% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.cursor-glow-element {
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.045) 0%, rgba(255, 255, 255, 0.012) 45%, transparent 70%);
+  mix-blend-mode: screen;
+}
+
+html.light .cursor-glow-element {
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.06) 0%, rgba(124, 58, 237, 0.015) 45%, transparent 70%);
+  mix-blend-mode: multiply;
+}
