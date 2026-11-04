@@ -54,6 +54,7 @@ export const projectsData: ProjectItem[] = [
         type: 'gameplay',
       },
     ],
+    githubUrl: 'https://github.com/11HaiderA/FreeBlock',
     featured: false,
   },
   {
@@ -110,6 +111,7 @@ export const projectsData: ProjectItem[] = [
         type: 'gameplay',
       },
     ],
+    githubUrl: 'https://github.com/11HaiderA/PairUP',
     featured: false,
   },
   {
@@ -162,6 +164,7 @@ export const projectsData: ProjectItem[] = [
         type: 'gameplay',
       },
     ],
+    githubUrl: 'https://github.com/11HaiderA/IGNITE',
     featured: false,
   },
   {
@@ -201,6 +204,7 @@ export const projectsData: ProjectItem[] = [
         type: 'overview',
       },
     ],
+    githubUrl: 'https://github.com/11HaiderA/ErrorDNA',
     featured: false,
   },
 ];

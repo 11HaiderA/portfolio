@@ -43,7 +43,7 @@ export const profileData: ProfileData = {
   email: 'pakhaider592@gmail.com',
   whatsappNumber: '+92 310 2698470',
   whatsappUrl: 'https://wa.me/923102698470',
-  githubUrl: 'https://github.com',
+  githubUrl: 'https://github.com/11HaiderA',
   location: 'Available for Opportunities',
   
   // Professional call-to-action availability line
