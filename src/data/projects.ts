@@ -1,5 +1,8 @@
 import type { ProjectItem } from '../types/portfolio';
 
+// Resolve asset URLs cleanly across both root domains and subpath deployments like GitHub Pages
+const asset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`;
+
 /**
  * Featured projects for Haider Ali with attached production screenshots.
  */
@@ -33,22 +36,22 @@ export const projectsData: ProjectItem[] = [
       },
     ],
     schematicType: 'freeblock',
-    image: '/screenshots/freeblock-splash.jpg',
+    image: asset('screenshots/freeblock-splash.jpg'),
     screenshots: [
       {
-        url: '/screenshots/freeblock-splash.jpg',
+        url: asset('screenshots/freeblock-splash.jpg'),
         title: 'Splash Screen',
         caption: 'Branded loading screen with animated progress bar',
         type: 'splash',
       },
       {
-        url: '/screenshots/freeblock-menu.jpg',
+        url: asset('screenshots/freeblock-menu.jpg'),
         title: 'Main Menu',
         caption: 'Stage tier selection, level progression, and settings',
         type: 'menu',
       },
       {
-        url: '/screenshots/freeblock-gameplay.jpg',
+        url: asset('screenshots/freeblock-gameplay.jpg'),
         title: 'Interactive Gameplay',
         caption: 'Tactile 6x6 sliding puzzle board with optimal step benchmarking',
         type: 'gameplay',
@@ -90,22 +93,22 @@ export const projectsData: ProjectItem[] = [
       },
     ],
     schematicType: 'pairup',
-    image: '/screenshots/pairup-splash.jpg',
+    image: asset('screenshots/pairup-splash.jpg'),
     screenshots: [
       {
-        url: '/screenshots/pairup-splash.jpg',
+        url: asset('screenshots/pairup-splash.jpg'),
         title: 'Splash Screen',
         caption: 'Animated magical forest entrance featuring the fox mascot',
         type: 'splash',
       },
       {
-        url: '/screenshots/pairup-menu.jpg',
+        url: asset('screenshots/pairup-menu.jpg'),
         title: 'Main Menu',
         caption: 'Mode selection, level tiers, profile stats, and coin economy',
         type: 'menu',
       },
       {
-        url: '/screenshots/pairup-gameplay.jpg',
+        url: asset('screenshots/pairup-gameplay.jpg'),
         title: 'Interactive Gameplay',
         caption: 'Fast-paced card matching grid with countdown timer and lives',
         type: 'gameplay',
@@ -143,22 +146,22 @@ export const projectsData: ProjectItem[] = [
       },
     ],
     schematicType: 'matchsticks',
-    image: '/screenshots/matchsticks-splash.jpg',
+    image: asset('screenshots/matchsticks-splash.jpg'),
     screenshots: [
       {
-        url: '/screenshots/matchsticks-splash.jpg',
+        url: asset('screenshots/matchsticks-splash.jpg'),
         title: 'Splash Screen',
         caption: 'Striking match animation with atmospheric smoke and glow',
         type: 'splash',
       },
       {
-        url: '/screenshots/matchsticks-menu.jpg',
+        url: asset('screenshots/matchsticks-menu.jpg'),
         title: 'Main Menu',
         caption: 'Ignite Your Mind menu with level resume and stage progression',
         type: 'menu',
       },
       {
-        url: '/screenshots/matchsticks-gameplay.jpg',
+        url: asset('screenshots/matchsticks-gameplay.jpg'),
         title: 'Interactive Gameplay',
         caption: 'Arithmetic equation puzzle with drag-and-drop match manipulation',
         type: 'gameplay',
@@ -195,10 +198,10 @@ export const projectsData: ProjectItem[] = [
       },
     ],
     schematicType: 'errordna',
-    image: '/screenshots/errordna-overview.jpg',
+    image: asset('screenshots/errordna-overview.jpg'),
     screenshots: [
       {
-        url: '/screenshots/errordna-overview.jpg',
+        url: asset('screenshots/errordna-overview.jpg'),
         title: 'Health Dashboard',
         caption: 'Diagnostic study dashboard with conceptual error metrics',
         type: 'overview',
